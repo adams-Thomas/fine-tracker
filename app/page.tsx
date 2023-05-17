@@ -1,13 +1,17 @@
 import InteractiveCard, { Props as CardData } from '@/components/InteractiveCard';
 import AuthButtons from '@/components/home/AuthButtons';
 import SearchCode from '@/components/home/SearchCode';
+import { currentUser } from '@clerk/nextjs';
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+  const isSignedIn = user !== null;
+
   const cards: CardData[] = [
     {
       title: 'Are you the fines master?',
       message: `As a fines master you are in charge of creating and running the meeting. There are some rules that everyone must adhere to, these will be explained as you create the meeting. Or you can just use your own. \n To get started, click below to login or signup.`,
-      interactive: <AuthButtons />
+      interactive: <AuthButtons isSignedIn={isSignedIn}/>
     },
     {
       title: 'Or, Are you attending the fines meeting?',
