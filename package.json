@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^4.17.3",
     "@clerk/themes": "^1.6.4",
+    "@prisma/client": "^4.14.1",
     "@types/node": "20.1.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
@@ -25,6 +26,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.3"
+    "@tailwindcss/forms": "^0.5.3",
+    "prisma": "^4.14.1"
   }
 }

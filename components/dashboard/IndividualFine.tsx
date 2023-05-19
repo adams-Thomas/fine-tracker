@@ -4,8 +4,8 @@ import NoFine from "./NoFine";
 
 function IndividualFine() {
   return (<>
-    <NoFine />
-    {/* <NewMeeting /> */}
+    {/* <NoFine /> */}
+    <NewMeeting />
     {/* <FineDetails /> */}
   </>)
 }
