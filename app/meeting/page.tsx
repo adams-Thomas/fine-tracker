@@ -1,5 +1,5 @@
-import AddFine from "@/components/meeting/AddFine";
-import FineList from "@/components/meeting/FinesList";
+import AddFine from "./AddFine";
+import FineList from "./FinesList";
 
 function ViewMeeting() {
   return (<>

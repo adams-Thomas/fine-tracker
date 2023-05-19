@@ -1,7 +1,7 @@
-import InteractiveCard, { Props as CardData } from '@/components/InteractiveCard';
-import AuthButtons from '@/components/home/AuthButtons';
-import SearchCode from '@/components/home/SearchCode';
 import { currentUser } from '@clerk/nextjs';
+import SearchCode from './common/SearchCode';
+import AuthButtons from './auth/AuthButtons';
+import InteractiveCard, { Props as CardData } from './common/InteractiveCard';
 
 export default async function Home() {
   const user = await currentUser();

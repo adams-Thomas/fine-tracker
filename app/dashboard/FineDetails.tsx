@@ -1,6 +1,6 @@
-import FineItem from "../FineItem";
-import InlineInput from "../InlineInput";
 import Image from "next/image";
+import FineItem from "../common/FineItem";
+import InlineInput from "../common/InlineInput";
 
 function FineDetails() {
   const edit = false;

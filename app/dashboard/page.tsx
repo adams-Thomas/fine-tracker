@@ -1,6 +1,7 @@
-import IndividualFine from "@/components/dashboard/IndividualFine";
 import { UserButton } from "@clerk/nextjs";
-import Image from "next/image";
+import IndividualFine from "./IndividualFine";
+import { addMeeting } from './actions';
+
 
 const mockFines: any[] = [];
 
@@ -30,7 +31,7 @@ function Dashboard() {
           }
         </div>
         <div className="flex-[3] p-5 flex">
-          <IndividualFine />
+          <IndividualFine addMeeting={addMeeting}/>
         </div>
       </div>
     </div>

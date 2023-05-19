@@ -1,14 +1,20 @@
 //TODO Make this better, IE form with server actions
 //TODO find and add fines meeting rules to the screen. 
 //TODO Also add disclaimer about using own rules.
-
 'use client'
 
-function NewMeeting() {
+interface Props {
+  addMeeting: (e: FormData) => Promise<void>;
+  onComplete: (view: number) => void;
+}
 
-  async function formSubmit(e: any) {
-    'use server'
-    console.log(e);
+function NewMeeting(props: Props) {
+
+  const { addMeeting, onComplete } = props;
+
+  async function formSubmit(e: FormData) {
+    await addMeeting(e);
+    onComplete(0);
   }
 
   return (<>
@@ -17,7 +23,7 @@ function NewMeeting() {
         Add new fines meeting
       </h1>
 
-      <form onSubmit={formSubmit}>
+      <form action={formSubmit}>
         <div className='mb-5'>
           <p className="text-gainsboro">Fines meeting name</p>
           <input name="meeting_name" placeholder="Enter meeting name..." className='bg-gainsboro rounded-lg form-input text-pearl-cyan' />
@@ -32,7 +38,7 @@ function NewMeeting() {
           <button className="btn w-[100px] mr-6">
             Save
           </button>
-          <button type='reset' className="btn btn-solid w-[70px]">
+          <button type='reset' className="btn btn-solid w-[70px]" onClick={() => onComplete(0)}>
             Cancel
           </button>
         </div>

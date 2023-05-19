@@ -27,7 +27,7 @@ model FinesMeeting {
   created_at        DateTime      @default(now())
   updated_at        DateTime      @updatedAt
   fines_master      String
-  meeting_name         String
+  meeting_name      String
   user_id           String
   fines             Fine[]
 }
