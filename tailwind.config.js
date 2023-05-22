@@ -52,6 +52,9 @@ module.exports = {
             color: '#dcdcdc'
           }
         },
+        '.btn-no-border': {
+          border: 'none'
+        },
         'h1': {
           fontWeight: '700',
           fontSize: '2.25rem',

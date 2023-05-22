@@ -18,7 +18,7 @@ model Fine {
   recipient         String      
   giver             String
   amount            Int
-  fines_meeting     FinesMeeting  @relation(fields: [fines_meeting_id], references: [id])
+  fines_meeting     FinesMeeting  @relation(fields: [fines_meeting_id], references: [id], onDelete: Cascade)
   fines_meeting_id  Int
 }
 

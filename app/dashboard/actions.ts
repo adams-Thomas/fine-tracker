@@ -1,6 +1,6 @@
 'use server'
 
-import client from "@/prisma/client";
+import { prisma } from "@/prisma/client";
 import { auth } from "@clerk/nextjs";
 import { FinesMeeting } from "@prisma/client";
 
@@ -16,7 +16,7 @@ export async function addMeeting(e: FormData) {
   
     const { userId } = auth();
   
-    await client.finesMeeting.create({
+    await prisma.finesMeeting.create({
       data: {
         ...formData as any,
         user_id: userId
@@ -32,7 +32,7 @@ export async function listMeetings(): Promise<FinesMeeting[]> {
     const { userId } = auth();
     if (!userId) return [];
 
-    const meetings = await client.finesMeeting.findMany({
+    const meetings = await prisma.finesMeeting.findMany({
       where: {
         user_id: userId
       },
@@ -47,3 +47,20 @@ export async function listMeetings(): Promise<FinesMeeting[]> {
     return [];
   }
 }
+
+export async function deleteMeeting(id: number) {
+  try {
+    const { userId } = auth();
+    if (!userId)
+      throw new Error('Unauthorized')
+
+    await prisma.finesMeeting.deleteMany({
+      where: {
+        id: id,
+        user_id: userId
+      }
+    })
+  } catch (error) {
+    console.error(error);
+  }
+} 

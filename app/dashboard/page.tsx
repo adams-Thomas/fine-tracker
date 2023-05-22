@@ -1,6 +1,6 @@
 import { UserButton } from "@clerk/nextjs";
 import IndividualFine from "./IndividualFine";
-import { addMeeting, listMeetings } from './actions';
+import { addMeeting, deleteMeeting, listMeetings } from './actions';
 import { FinesMeeting } from "@prisma/client";
 import MeetingItem from "../common/MeetingItem";
 
@@ -32,7 +32,7 @@ async function Dashboard() {
           }
         </div>
         <div className="flex-[3] p-5 flex">
-          <IndividualFine addMeeting={addMeeting}/>
+          <IndividualFine addMeeting={addMeeting} deleteMeeting={deleteMeeting}/>
         </div>
       </div>
     </div>
