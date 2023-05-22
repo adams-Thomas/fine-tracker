@@ -2,6 +2,7 @@
 
 import client from "@/prisma/client";
 import { auth } from "@clerk/nextjs";
+import { FinesMeeting } from "@prisma/client";
 
 export async function addMeeting(e: FormData) {
   try {
@@ -23,5 +24,26 @@ export async function addMeeting(e: FormData) {
     })
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function listMeetings(): Promise<FinesMeeting[]> {
+  try {
+    const { userId } = auth();
+    if (!userId) return [];
+
+    const meetings = await client.finesMeeting.findMany({
+      where: {
+        user_id: userId
+      },
+      include: {
+        fines: true
+      }
+    })
+
+    return meetings;
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 }
