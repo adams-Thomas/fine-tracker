@@ -30,4 +30,5 @@ model FinesMeeting {
   meeting_name      String
   user_id           String
   fines             Fine[]
+  meeting_code      String
 }

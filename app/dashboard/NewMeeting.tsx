@@ -3,6 +3,8 @@
 //TODO Also add disclaimer about using own rules.
 'use client'
 
+import { useStore } from "../context/MeetingStore";
+
 interface Props {
   addMeeting: (e: FormData) => Promise<void>;
   onComplete: (view: number) => void;
@@ -11,9 +13,13 @@ interface Props {
 function NewMeeting(props: Props) {
 
   const { addMeeting, onComplete } = props;
+  const [, setStore] = useStore((store) => store.refresh);
 
   async function formSubmit(e: FormData) {
     await addMeeting(e);
+    setStore({
+      refresh: true
+    });
     onComplete(0);
   }
 

@@ -5,12 +5,14 @@ import { createContext, useCallback, useContext, useRef, useState, useSyncExtern
 
 type Store = {
   list: FinesMeeting[],
-  selected: FinesMeeting | undefined
+  selected: FinesMeeting | undefined,
+  refresh: boolean
 }
 
 const initialState: Store = {
   list: [],
-  selected: undefined
+  selected: undefined,
+  refresh: false
 }
 
 function useStoreData(): {

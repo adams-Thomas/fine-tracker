@@ -1,20 +1,26 @@
 'use client'
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, use, useEffect, useState } from "react";
 
 interface Props {
   data: string,
   edit: boolean,
-  header?: boolean
+  header?: boolean,
+  set: (value: string) => void
 }
 
 function InlineInput(props: Props) {
-  const { data, edit, header } = props;
-  const [ text, setText ] = useState(data);
+  const { data, edit, header, set } = props;
+  const [ text, setText ] = useState('');
   
   function textChange(e: ChangeEvent<HTMLInputElement>) {
-    setText(e.target.value)
+    setText(e.target.value);
+    set(e.target.value);
   }
+
+  useEffect(() => {
+    setText(data)
+  }, [data])
 
   return(<>
     {
